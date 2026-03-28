@@ -12,7 +12,7 @@ from modules.scam_detector import detect_scam
 from modules.code_debugger import debug_code
 from modules.statement_analyzer import analyze_statement
 from modules.text_analyzer import analyze_text
-from modules.body_language import analyze_body_language
+#from modules.body_language import analyze_body_language
 
 # 🔥 Page config
 st.set_page_config(page_title="AI Smart Toolkit", layout="wide")
@@ -46,7 +46,7 @@ st.sidebar.title("🧠 Toolkit Panel")
 
 option = st.sidebar.selectbox(
     "Choose Tool",
-    ["Scam Detector", "Code Debugger", "Statement Analyzer", "Text Analyzer", "Body Language Analyzer"]
+    ["Scam Detector", "Code Debugger", "Statement Analyzer", "Text Analyzer"]
 )
 
 # 🗑 Clear history
@@ -104,7 +104,7 @@ with colC:
     st.markdown(f'<div class="card">🎯 Last Confidence<br><h2>{last_conf}</h2></div>', unsafe_allow_html=True)
 
 # 💬 CHAT SYSTEM
-if option != "Body Language Analyzer":
+if True:
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -228,8 +228,3 @@ if tool_counts:
 
     st.plotly_chart(fig, use_container_width=True, key=str(id(fig)))
 
-# 📷 BODY LANGUAGE
-if option == "Body Language Analyzer":
-    st.warning("Press Q to stop camera")
-    if st.button("Start Camera"):
-        analyze_body_language()
